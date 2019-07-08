@@ -37,8 +37,11 @@ $wgResourceBasePath = $wgScriptPath;
 
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo = "$wgResourceBasePath/resources/assets/mstakx.png";
+#$wgLogo = "$wgResourceBasePath/resources/assets/mstakx.png";
 
+# Static contents has to go inside nginx - Only php extension will be served from fpm
+
+$wgLogo = "https://mstakx.com/wp-content/uploads/2018/06/finals-logo-mstakx-light.png"
 ## UPO means: this is also a user preference option
 
 $wgEnableEmail = true;
