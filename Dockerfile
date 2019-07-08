@@ -58,6 +58,7 @@ RUN apk add --no-cache \
     && chown -R www /var/www/mediawiki \
     && apk del .build-dependencies
 ADD LocalSettings.php /var/www/mediawiki/
+ADD mstakx.png /var/www/mediawiki/resources/assets/
 RUN chown www /var/www/mediawiki/LocalSettings.php
 # Syntax highlight requires Python for Pygments. Uncomment the following line
 # if you plan to use SyntaxHighlight (aka SyntaxHighlight_GeSHi) extension:
