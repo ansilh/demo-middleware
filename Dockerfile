@@ -62,6 +62,9 @@ ENV PHP_VERSION 7.3.7
 ENV PHP_URL="https://www.php.net/get/php-7.3.7.tar.xz/from/this/mirror" PHP_ASC_URL="https://www.php.net/get/php-7.3.7.tar.xz.asc/from/this/mirror"
 ENV PHP_SHA256="ba067200ba649956b3a92ec8b71a6ed8ce8a099921212443c1bcf3260a29274c" PHP_MD5=""
 
+ENV WIKI_MAJOR_VERSION 1.33
+ENV WIKI_MINOR_VERSION 0
+
 RUN set -eux; \
 	\
 	apk add --no-cache --virtual .fetch-deps gnupg; \
