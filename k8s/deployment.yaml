@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: php
+spec:
+  ports:
+  - port: 80
+  selector:
+    tier: middleware
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+  labels:
+    tier: middleware
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+      tier: middleware
+  template:
+    metadata:
+      labels:
+        app: php
+        tier: middleware
+    spec:
+      imagePullSecrets:
+      - name: local-registry
+      containers:
+      - name: php7-fpm
+        image: 10.128.0.4:5000/middleware:3
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https

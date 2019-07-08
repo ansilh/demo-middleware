@@ -221,7 +221,20 @@ RUN set -eux; \
 		echo '[www]'; \
 		echo 'listen = 9000'; \
 	} | tee php-fpm.d/zz-docker.conf
-
+RUN set -x \ 
+	&& apk add --no-cache gnupg \
+	&& mkdir -p /var/www \
+	&& cd /var/www \
+	&& wget https://releases.wikimedia.org/mediawiki/${WIKI_MAJOR_VERSION}/mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}.tar.gz \
+	&& wget https://releases.wikimedia.org/mediawiki/${WIKI_MAJOR_VERSION}/mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}.tar.gz.sig \
+	&& ls -l mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}.tar.gz* \
+	&& gpg --recv-key 875BE862 \
+	&& wget https://www.mediawiki.org/keys/keys.txt \
+	&& gpg --import keys.txt \
+	&& gpg --verify mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}.tar.gz.sig mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}.tar.gz \
+	&& tar -zxf mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}.tar.gz \
+	&& ln -s mediawiki-${WIKI_MAJOR_VERSION}.${WIKI_MINOR_VERSION}/ mediawiki \
+	&& chown -R www-data:www-data /var/www
 # Override stop signal to stop process gracefully
 # https://github.com/php/php-src/blob/17baa87faddc2550def3ae7314236826bc1b1398/sapi/fpm/php-fpm.8.in#L163
 STOPSIGNAL SIGQUIT
