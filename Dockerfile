@@ -57,7 +57,8 @@ RUN apk add --no-cache \
     && adduser -S -D -H www \
     && chown -R www /var/www/mediawiki \
     && apk del .build-dependencies
-
+ADD LocalSettings.php /var/www/mediawiki/
+RUN chown www /var/www/mediawiki/LocalSettings.php
 # Syntax highlight requires Python for Pygments. Uncomment the following line
 # if you plan to use SyntaxHighlight (aka SyntaxHighlight_GeSHi) extension:
 #RUN apk add --no-cache python3 && ln -s python3 /usr/bin/python
