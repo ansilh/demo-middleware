@@ -10,7 +10,7 @@
 - FIndout a way to do scan before push
 */
 def label = "build-push-scan-${UUID.randomUUID().toString()}"
-def registry_url = "10.128.0.4:5000"
+def registry_url = "10.128.0.2:5000"
 
 podTemplate(name: 'docker', cloud: 'Kubernetes', label: label, yaml: """
 apiVersion: v1
