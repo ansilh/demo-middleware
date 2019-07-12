@@ -31,7 +31,12 @@ spec:
       - name: local-registry
       containers:
       - name: php7-fpm
-        image: 10.128.0.4:5000/middleware:10
+        image: 10.128.0.2:5000/middleware:3
         ports:
         - containerPort: 9000
           name: phpfpm
+# Tips
+# php maintenance/install.php --wiki "mStakX" --dbuser mediawiki --dbpass mediawiki --dbname mstakx_wiki --dbprefix mstakx --dbserver mysql --dbtype mysql --installdbpass password --installdbuser root --pass P@ssw0rd1234 mStakX admin
+# $wgShowExceptionDetails = true;
+# $wgShowDBErrorBacktrace = true;
+# $wgShowSQLErrors = true;

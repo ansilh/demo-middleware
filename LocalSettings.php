@@ -41,7 +41,7 @@ $wgResourceBasePath = $wgScriptPath;
 
 # Static contents has to go inside nginx - Only php extension will be served from fpm
 
-$wgLogo = "https://mstakx.com/wp-content/uploads/2018/06/finals-logo-mstakx-light.png"
+$wgLogo = "https://mstakx.com/wp-content/uploads/2018/06/finals-logo-mstakx-light.png";
 ## UPO means: this is also a user preference option
 
 $wgEnableEmail = true;
