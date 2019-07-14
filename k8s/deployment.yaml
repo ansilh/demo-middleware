@@ -35,8 +35,26 @@ spec:
         ports:
         - containerPort: 9000
           name: phpfpm
-# Tips
+# TODO
+
+# Adding custom installer is not easy when we need to scale php 
+# A shared storage like NFS were needed to serve files 
+# One time installation should be done at startup 
+# But this can be automated 
+# 1. Test if there is a localfile present ; if yes then skip installation 
+# 
+# If no local file , then we need to execute the installer script 
+# We need to rely on MariDB Pod which supposed to create a DB and user for us 
+
 # php maintenance/install.php --wiki "mStakX" --dbuser mediawiki --dbpass mediawiki --dbname mstakx_wiki --dbprefix mstakx --dbserver mysql --dbtype mysql --installdbpass password --installdbuser root --pass P@ssw0rd1234 mStakX admin
+# MEDIA_WIKI_NAME
+# MEDIA_WIKI_USER
+# MEDIA_WIKI_PASS
+# MEDIA_WIKI_DB_USER
+# MEDIA_WIKI_DB_PASS
+# MEDIA_WIKI_INSTALL_DB_USER
+# MEDIA_WIKI_INSTALL_DB_PASS
+# MEDIA_WIKI_DB_TYPE
 # $wgShowExceptionDetails = true;
 # $wgShowDBErrorBacktrace = true;
 # $wgShowSQLErrors = true;
